@@ -525,6 +525,49 @@ body {
 }
 
 /* ============================================================
+   Footer de la sidebar
+   ============================================================ */
+.sidebar-footer {
+  padding: var(--spacing-md);
+  border-top: 1px solid var(--sky-100);
+  background: var(--white);
+  flex-shrink: 0;
+}
+
+.footer-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--sky-600);
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.footer-links {
+  font-size: 11px;
+  color: var(--sky-400);
+  line-height: 1.8;
+}
+
+.footer-links a {
+  color: var(--sky-500);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.footer-links a:hover {
+  color: var(--sky-700, var(--sky-800));
+  text-decoration: underline;
+}
+
+.footer-credits {
+  font-size: 10px;
+  color: var(--sky-300);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+/* ============================================================
    Carte Leaflet
    ============================================================ */
 main {
