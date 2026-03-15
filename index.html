@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nowindcity — Trouve ta ville sans vent</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="app">
+
+    <!-- Sidebar -->
+    <aside id="sidebar">
+
+      <div class="sidebar-header">
+        <div class="logo-wrapper">
+          <div class="logo-icon">💨</div>
+          <div>
+            <h1 class="app-title">nowindcity</h1>
+            <p class="app-subtitle">Les villes les moins venteuses de France</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-inner">
+        <div class="sidebar-actions">
+          <button id="btn-analyser" class="btn-primary">Analyser les vents</button>
+          <p id="status-message" class="text-sm mt-sm" style="color: var(--sky-500)"></p>
+        </div>
+
+        <p class="section-title mt-md">Classement des villes</p>
+        <div id="city-list" class="cities-list"></div>
+      </div>
+
+      <div class="legend">
+        <p class="legend-title">Score Frizz</p>
+        <div class="legend-items">
+          <div class="legend-item">
+            <span class="legend-dot" style="background:#0ea5e9"></span>
+            0–2 · Paradis 😇
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot" style="background:#38bdf8"></span>
+            3–4 · Calme 😊
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot" style="background:#f59e0b"></span>
+            5–6 · Modéré 😐
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot" style="background:#f97316"></span>
+            7–8 · Venteux 😬
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot" style="background:#ef4444"></span>
+            9–10 · Tempête 😱
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- Carte Leaflet -->
+    <div id="map"></div>
+
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Scripts de l'application (ordre important : api → map → ui) -->
+  <script src="js/api.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/ui.js"></script>
+</body>
+</html>

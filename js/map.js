@@ -1,18 +1,5 @@
 // map.js — Gestion de la carte Leaflet et des marqueurs de villes
-
-/**
- * Retourne la couleur et l'emoji associés à un score de vent (0-10).
- * Un score élevé signifie peu de vent (favorable aux cheveux bouclés).
- * @param {number} score - Score Frizz de 0 à 10
- * @returns {{ color: string, emoji: string }}
- */
-const getWindCategory = (score) => {
-  if (score >= 8) return { color: '#0ea5e9', emoji: '😄' }; // Très calme — sky-500
-  if (score >= 6) return { color: '#38bdf8', emoji: '🙂' }; // Calme — sky-400
-  if (score >= 4) return { color: '#7dd3fc', emoji: '😐' }; // Modéré — sky-300
-  if (score >= 2) return { color: '#bae6fd', emoji: '😕' }; // Venteux — sky-200
-  return { color: '#e0f2fe', emoji: '😩' };                  // Très venteux — sky-100
-};
+// getWindCategory est définie dans api.js et partagée en scope global
 
 /**
  * Initialise la carte Leaflet centrée sur la France.
