@@ -53,6 +53,8 @@ body {
   height: 100%;
   width: 100%;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 body {
@@ -70,7 +72,7 @@ body {
 #app {
   display: flex;
   flex-direction: row;
-  height: 100vh;
+  flex: 1;
   width: 100vw;
   overflow: hidden;
 }
@@ -525,46 +527,38 @@ body {
 }
 
 /* ============================================================
-   Footer de la sidebar
+   Footer global
    ============================================================ */
-.sidebar-footer {
-  padding: var(--spacing-md);
-  border-top: 1px solid var(--sky-100);
-  background: var(--white);
+.site-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: var(--sky-800);
+  font-size: 12px;
   flex-shrink: 0;
 }
 
-.footer-title {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--sky-600);
-  margin-bottom: 6px;
-  line-height: 1.4;
-}
-
 .footer-links {
-  font-size: 11px;
-  color: var(--sky-400);
-  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
 }
 
 .footer-links a {
-  color: var(--sky-500);
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
-  font-weight: 500;
   transition: color var(--transition-fast);
 }
 
 .footer-links a:hover {
-  color: var(--sky-700, var(--sky-800));
+  color: var(--white);
   text-decoration: underline;
 }
 
 .footer-credits {
-  font-size: 10px;
-  color: var(--sky-300);
-  margin-top: 6px;
-  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.8);
+  white-space: nowrap;
+  margin-left: var(--spacing-lg);
 }
 
 /* ============================================================
