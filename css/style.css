@@ -527,6 +527,12 @@ body {
 /* ============================================================
    Carte Leaflet
    ============================================================ */
+main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+}
+
 #map {
   flex: 1;
   height: 100vh;
@@ -760,6 +766,10 @@ body {
     padding: var(--spacing-sm) var(--spacing-md);
   }
 
+  main {
+    height: 55vh;
+  }
+
   #map {
     height: 55vh;
   }
@@ -773,6 +783,10 @@ body {
 @media (max-width: 480px) {
   #sidebar {
     max-height: 50vh;
+  }
+
+  main {
+    height: 50vh;
   }
 
   #map {
