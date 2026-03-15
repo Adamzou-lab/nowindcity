@@ -1,0 +1,814 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+/* ============================================================
+   Variables globales
+   ============================================================ */
+:root {
+  --sky-50: #f0f9ff;
+  --sky-100: #e0f2fe;
+  --sky-200: #bae6fd;
+  --sky-300: #7dd3fc;
+  --sky-400: #38bdf8;
+  --sky-500: #0ea5e9;
+  --sky-600: #0284c7;
+  --sky-800: #075985;
+  --white: #ffffff;
+  --text: #0c4a6e;
+
+  /* Espacements */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* Rayons d'arrondi */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Ombres */
+  --shadow-sm: 0 1px 3px rgba(12, 74, 110, 0.08), 0 1px 2px rgba(12, 74, 110, 0.05);
+  --shadow-md: 0 4px 12px rgba(12, 74, 110, 0.10), 0 2px 6px rgba(12, 74, 110, 0.06);
+  --shadow-lg: 0 10px 30px rgba(12, 74, 110, 0.12), 0 4px 12px rgba(12, 74, 110, 0.08);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+}
+
+/* ============================================================
+   Reset & base
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  color: var(--text);
+  background-color: var(--sky-50);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================
+   Layout principal
+   ============================================================ */
+#app {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* ============================================================
+   Sidebar
+   ============================================================ */
+#sidebar {
+  width: 320px;
+  min-width: 320px;
+  height: 100vh;
+  background-color: var(--white);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 100;
+}
+
+/* Zone scrollable à l'intérieur de la sidebar */
+.sidebar-inner {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-md);
+  scrollbar-width: thin;
+  scrollbar-color: var(--sky-200) transparent;
+}
+
+.sidebar-inner::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-inner::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-inner::-webkit-scrollbar-thumb {
+  background-color: var(--sky-200);
+  border-radius: var(--radius-full);
+}
+
+/* ============================================================
+   Header de la sidebar
+   ============================================================ */
+.sidebar-header {
+  padding: var(--spacing-lg) var(--spacing-md) var(--spacing-md);
+  border-bottom: 1px solid var(--sky-100);
+  background: linear-gradient(135deg, var(--sky-50) 0%, var(--white) 100%);
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
+}
+
+.logo-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--sky-400), var(--sky-600));
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.35);
+  flex-shrink: 0;
+}
+
+.app-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--sky-800);
+  letter-spacing: -0.3px;
+  line-height: 1;
+}
+
+.app-subtitle {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--sky-500);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   Bouton principal
+   ============================================================ */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  width: 100%;
+  padding: 12px var(--spacing-md);
+  background: linear-gradient(135deg, var(--sky-500), var(--sky-600));
+  color: var(--white);
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(14, 165, 233, 0.30);
+  transition: background var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+  letter-spacing: 0.1px;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--sky-600), var(--sky-800));
+  box-shadow: 0 4px 16px rgba(14, 165, 233, 0.40);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 6px rgba(14, 165, 233, 0.25);
+}
+
+.btn-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Variante secondaire */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: 9px var(--spacing-md);
+  background: var(--sky-50);
+  color: var(--sky-600);
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1.5px solid var(--sky-200);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  background: var(--sky-100);
+  border-color: var(--sky-300);
+}
+
+/* ============================================================
+   Zone de recherche / filtres
+   ============================================================ */
+.search-wrapper {
+  position: relative;
+  margin-bottom: var(--spacing-md);
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 12px 10px 36px;
+  background: var(--sky-50);
+  border: 1.5px solid var(--sky-100);
+  border-radius: var(--radius-md);
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: var(--sky-300);
+}
+
+.search-input:focus {
+  border-color: var(--sky-400);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+  background: var(--white);
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--sky-300);
+  font-size: 15px;
+  pointer-events: none;
+}
+
+/* ============================================================
+   Section titre
+   ============================================================ */
+.section-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--sky-400);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+
+/* ============================================================
+   Cards de villes
+   ============================================================ */
+.cities-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.city-card {
+  background: var(--white);
+  border: 1.5px solid var(--sky-100);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  cursor: pointer;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.city-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--sky-400), var(--sky-600));
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.city-card:hover {
+  border-color: var(--sky-300);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.city-card:hover::before {
+  opacity: 1;
+}
+
+.city-card.active {
+  border-color: var(--sky-400);
+  box-shadow: var(--shadow-md);
+  background: var(--sky-50);
+}
+
+.city-card.active::before {
+  opacity: 1;
+}
+
+/* En-tête de la card */
+.city-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
+}
+
+.city-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.city-region {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--sky-400);
+  margin-top: 2px;
+}
+
+/* Pied de la card */
+.city-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--spacing-sm);
+}
+
+.city-stats {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.city-stat {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--sky-500);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+/* ============================================================
+   Score Frizz
+   ============================================================ */
+.frizz-score {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-width: 44px;
+  padding: 5px 8px;
+  border-radius: var(--radius-sm);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.frizz-score .score-label {
+  font-size: 9px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+  line-height: 1;
+}
+
+/* Niveaux de score */
+.frizz-score.score-excellent {
+  background: #ecfdf5;
+  color: #059669;
+}
+
+.frizz-score.score-good {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+.frizz-score.score-medium {
+  background: #fffbeb;
+  color: #d97706;
+}
+
+.frizz-score.score-bad {
+  background: #fff7ed;
+  color: #ea580c;
+}
+
+.frizz-score.score-terrible {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+/* ============================================================
+   Badge vent
+   ============================================================ */
+.wind-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  background: var(--sky-100);
+  color: var(--sky-600);
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  border: 1px solid var(--sky-200);
+}
+
+.wind-badge.wind-low {
+  background: #ecfdf5;
+  color: #059669;
+  border-color: #a7f3d0;
+}
+
+.wind-badge.wind-moderate {
+  background: #fffbeb;
+  color: #d97706;
+  border-color: #fde68a;
+}
+
+.wind-badge.wind-high {
+  background: #fff7ed;
+  color: #ea580c;
+  border-color: #fed7aa;
+}
+
+.wind-badge.wind-extreme {
+  background: #fef2f2;
+  color: #dc2626;
+  border-color: #fecaca;
+}
+
+/* ============================================================
+   Légende
+   ============================================================ */
+.legend {
+  background: var(--sky-50);
+  border-top: 1px solid var(--sky-100);
+  padding: var(--spacing-md);
+  flex-shrink: 0;
+}
+
+.legend-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--sky-400);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.legend-items {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 12px;
+  color: var(--text);
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-dot.dot-excellent { background: #059669; }
+.legend-dot.dot-good      { background: #16a34a; }
+.legend-dot.dot-medium    { background: #d97706; }
+.legend-dot.dot-bad       { background: #ea580c; }
+.legend-dot.dot-terrible  { background: #dc2626; }
+
+.legend-range {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--sky-400);
+}
+
+/* ============================================================
+   Carte Leaflet
+   ============================================================ */
+#map {
+  flex: 1;
+  height: 100vh;
+  min-width: 0;
+  z-index: 0;
+}
+
+/* Popups Leaflet customisés */
+.leaflet-popup-content-wrapper {
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-lg) !important;
+  font-family: 'Outfit', sans-serif !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.leaflet-popup-content {
+  margin: 0 !important;
+  line-height: 1.5 !important;
+  font-size: 14px !important;
+  color: var(--text) !important;
+}
+
+.leaflet-popup-tip {
+  background: var(--white) !important;
+}
+
+.leaflet-popup-close-button {
+  color: var(--sky-400) !important;
+  font-size: 18px !important;
+  top: 8px !important;
+  right: 8px !important;
+}
+
+/* Contenu du popup */
+.popup-content {
+  padding: var(--spacing-md);
+  min-width: 200px;
+}
+
+.popup-city-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: var(--spacing-xs);
+}
+
+.popup-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  margin-top: var(--spacing-sm);
+}
+
+/* Marqueurs personnalisés */
+.custom-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  border: 2px solid var(--white);
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.custom-marker:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.custom-marker .marker-inner {
+  transform: rotate(45deg);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+/* ============================================================
+   État de chargement
+   ============================================================ */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl) var(--spacing-md);
+  gap: var(--spacing-md);
+  color: var(--sky-400);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--sky-100);
+  border-top-color: var(--sky-500);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   État vide
+   ============================================================ */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl) var(--spacing-md);
+  gap: var(--spacing-sm);
+  text-align: center;
+}
+
+.empty-state-icon {
+  font-size: 36px;
+  margin-bottom: var(--spacing-xs);
+}
+
+.empty-state-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.empty-state-desc {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--sky-400);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   Barre d'action en haut de la sidebar
+   ============================================================ */
+.sidebar-actions {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--sky-100);
+}
+
+/* ============================================================
+   Tooltip info
+   ============================================================ */
+.tooltip {
+  position: relative;
+  cursor: help;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--sky-800);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 400;
+  padding: 5px 9px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  z-index: 200;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+}
+
+/* ============================================================
+   Divider
+   ============================================================ */
+.divider {
+  height: 1px;
+  background: var(--sky-100);
+  margin: var(--spacing-md) 0;
+}
+
+/* ============================================================
+   Chips / tags
+   ============================================================ */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  background: var(--sky-100);
+  color: var(--sky-600);
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid var(--sky-200);
+}
+
+/* ============================================================
+   Responsive — tablette / mobile
+   ============================================================ */
+
+/* Tablette : sidebar réduite */
+@media (max-width: 1024px) {
+  #sidebar {
+    width: 280px;
+    min-width: 280px;
+  }
+}
+
+/* Mobile : sidebar cachée, carte plein écran */
+@media (max-width: 768px) {
+  #app {
+    flex-direction: column;
+  }
+
+  #sidebar {
+    width: 100%;
+    min-width: unset;
+    height: auto;
+    max-height: 45vh;
+    overflow: hidden;
+    border-bottom: 2px solid var(--sky-200);
+    box-shadow: 0 4px 12px rgba(12, 74, 110, 0.10);
+  }
+
+  .sidebar-inner {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  #map {
+    height: 55vh;
+  }
+
+  .legend {
+    display: none;
+  }
+}
+
+/* Très petit écran */
+@media (max-width: 480px) {
+  #sidebar {
+    max-height: 50vh;
+  }
+
+  #map {
+    height: 50vh;
+  }
+
+  .app-title {
+    font-size: 18px;
+  }
+}
+
+/* ============================================================
+   Utilitaires
+   ============================================================ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.text-center { text-align: center; }
+.font-bold   { font-weight: 700; }
+.font-medium { font-weight: 500; }
+.text-sm     { font-size: 13px; }
+.text-xs     { font-size: 11px; }
+
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+
+.flex        { display: flex; }
+.items-center { align-items: center; }
+.gap-sm      { gap: var(--spacing-sm); }
+.gap-md      { gap: var(--spacing-md); }

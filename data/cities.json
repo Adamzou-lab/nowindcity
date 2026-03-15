@@ -1,0 +1,182 @@
+[
+  {
+    "name": "Paris",
+    "lat": 48.85,
+    "lng": 2.35,
+    "region": "Île-de-France"
+  },
+  {
+    "name": "Marseille",
+    "lat": 43.30,
+    "lng": 5.37,
+    "region": "Provence-Alpes-Côte d'Azur"
+  },
+  {
+    "name": "Lyon",
+    "lat": 45.75,
+    "lng": 4.85,
+    "region": "Auvergne-Rhône-Alpes"
+  },
+  {
+    "name": "Toulouse",
+    "lat": 43.60,
+    "lng": 1.44,
+    "region": "Occitanie"
+  },
+  {
+    "name": "Nice",
+    "lat": 43.70,
+    "lng": 7.27,
+    "region": "Provence-Alpes-Côte d'Azur"
+  },
+  {
+    "name": "Nantes",
+    "lat": 47.22,
+    "lng": -1.55,
+    "region": "Pays de la Loire"
+  },
+  {
+    "name": "Strasbourg",
+    "lat": 48.57,
+    "lng": 7.75,
+    "region": "Grand Est"
+  },
+  {
+    "name": "Montpellier",
+    "lat": 43.61,
+    "lng": 3.88,
+    "region": "Occitanie"
+  },
+  {
+    "name": "Bordeaux",
+    "lat": 44.84,
+    "lng": -0.58,
+    "region": "Nouvelle-Aquitaine"
+  },
+  {
+    "name": "Lille",
+    "lat": 50.63,
+    "lng": 3.07,
+    "region": "Hauts-de-France"
+  },
+  {
+    "name": "Rennes",
+    "lat": 48.11,
+    "lng": -1.68,
+    "region": "Bretagne"
+  },
+  {
+    "name": "Reims",
+    "lat": 49.26,
+    "lng": 4.03,
+    "region": "Grand Est"
+  },
+  {
+    "name": "Toulon",
+    "lat": 43.12,
+    "lng": 5.93,
+    "region": "Provence-Alpes-Côte d'Azur"
+  },
+  {
+    "name": "Grenoble",
+    "lat": 45.19,
+    "lng": 5.72,
+    "region": "Auvergne-Rhône-Alpes"
+  },
+  {
+    "name": "Dijon",
+    "lat": 47.32,
+    "lng": 5.04,
+    "region": "Bourgogne-Franche-Comté"
+  },
+  {
+    "name": "Angers",
+    "lat": 47.47,
+    "lng": -0.55,
+    "region": "Pays de la Loire"
+  },
+  {
+    "name": "Nîmes",
+    "lat": 43.84,
+    "lng": 4.36,
+    "region": "Occitanie"
+  },
+  {
+    "name": "Le Mans",
+    "lat": 48.00,
+    "lng": 0.20,
+    "region": "Pays de la Loire"
+  },
+  {
+    "name": "Aix-en-Provence",
+    "lat": 43.53,
+    "lng": 5.45,
+    "region": "Provence-Alpes-Côte d'Azur"
+  },
+  {
+    "name": "Brest",
+    "lat": 48.39,
+    "lng": -4.49,
+    "region": "Bretagne"
+  },
+  {
+    "name": "Tours",
+    "lat": 47.39,
+    "lng": 0.69,
+    "region": "Centre-Val de Loire"
+  },
+  {
+    "name": "Amiens",
+    "lat": 49.89,
+    "lng": 2.30,
+    "region": "Hauts-de-France"
+  },
+  {
+    "name": "Limoges",
+    "lat": 45.83,
+    "lng": 1.26,
+    "region": "Nouvelle-Aquitaine"
+  },
+  {
+    "name": "Besançon",
+    "lat": 47.24,
+    "lng": 6.02,
+    "region": "Bourgogne-Franche-Comté"
+  },
+  {
+    "name": "Orléans",
+    "lat": 47.90,
+    "lng": 1.91,
+    "region": "Centre-Val de Loire"
+  },
+  {
+    "name": "Metz",
+    "lat": 49.12,
+    "lng": 6.18,
+    "region": "Grand Est"
+  },
+  {
+    "name": "Rouen",
+    "lat": 49.44,
+    "lng": 1.10,
+    "region": "Normandie"
+  },
+  {
+    "name": "Mulhouse",
+    "lat": 47.75,
+    "lng": 7.34,
+    "region": "Grand Est"
+  },
+  {
+    "name": "Perpignan",
+    "lat": 42.70,
+    "lng": 2.90,
+    "region": "Occitanie"
+  },
+  {
+    "name": "Caen",
+    "lat": 49.18,
+    "lng": -0.37,
+    "region": "Normandie"
+  }
+]
