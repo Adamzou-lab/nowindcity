@@ -31,6 +31,9 @@ const createCityCard = (city, score, windData, marker) => {
 
   const card = document.createElement('div');
   card.className = 'city-card';
+  card.setAttribute('role', 'listitem');
+  card.setAttribute('tabindex', '0');
+  card.setAttribute('aria-label', `${city.name} — Score Frizz ${score.toFixed(1)}, vent ${windData.speed.toFixed(0)} km/h`);
 
   card.innerHTML = `
     <div class="city-card-header">
@@ -45,15 +48,16 @@ const createCityCard = (city, score, windData, marker) => {
     </div>
   `;
 
-  // Centrage carte + ouverture popup au clic
-  card.addEventListener('click', () => {
-    map.setView([city.lat, city.lng], 10, { animate: true });
+  // Centrage carte + ouverture popup au clic ou touche Entrée
+  const activerVille = () => {
+    map.flyTo([city.lat, city.lng], 7, { duration: 1.8 });
     marker.openPopup();
-
-    // Mise en évidence de la card active
     document.querySelectorAll('.city-card').forEach(c => c.classList.remove('active'));
     card.classList.add('active');
-  });
+  };
+
+  card.addEventListener('click', activerVille);
+  card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') activerVille(); });
 
   return card;
 };

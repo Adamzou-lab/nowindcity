@@ -9,6 +9,7 @@
   <meta name="description" content="Découvrez les villes les moins venteuses de France grâce à notre carte interactive. Comparez le vent en temps réel dans 30 grandes villes françaises. Idéal pour les cheveux bouclés !" />
   <meta name="keywords" content="villes sans vent France, carte vent France, ville calme vent, vent France carte, moins venteux France, météo vent villes" />
   <meta name="author" content="nowindcity" />
+  <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://nowindcity.fr/" />
 
   <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
@@ -19,6 +20,7 @@
   <meta property="og:image" content="https://nowindcity.fr/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="nowindcity — carte des villes sans vent en France, fond sky-blue" />
   <meta property="og:locale" content="fr_FR" />
   <meta property="og:site_name" content="nowindcity" />
 
@@ -28,6 +30,7 @@
   <meta name="twitter:title" content="nowindcity — Carte des villes sans vent en France" />
   <meta name="twitter:description" content="Trouvez les villes les moins venteuses de France. Carte interactive avec score Frizz en temps réel pour 30 grandes villes." />
   <meta name="twitter:image" content="https://nowindcity.fr/og-image.png" />
+  <meta name="twitter:image:alt" content="nowindcity — carte des villes sans vent en France" />
 
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
@@ -40,18 +43,33 @@
     "applicationCategory": "WeatherApplication",
     "operatingSystem": "All",
     "inLanguage": "fr-FR",
+    "featureList": [
+      "Carte interactive des vents en France",
+      "Score Frizz pour 30 grandes villes",
+      "Données météo en temps réel via Open-Meteo",
+      "Classement des villes par niveau de vent"
+    ],
     "offers": {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "EUR"
     },
-    "keywords": "villes sans vent France, carte vent France, ville calme vent"
+    "publisher": {
+      "@type": "Organization",
+      "name": "nowindcity"
+    }
   }
   </script>
 
-  <!-- Préconnexion polices Google Fonts -->
+  <!-- Préconnexion et préchargement polices Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" />
+
+  <!-- DNS prefetch ressources tierces -->
+  <link rel="dns-prefetch" href="https://unpkg.com" />
+  <link rel="dns-prefetch" href="https://basemaps.cartocdn.com" />
+  <link rel="dns-prefetch" href="https://api.open-meteo.com" />
 
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -63,49 +81,51 @@
   <div id="app">
 
     <!-- Sidebar -->
-    <aside id="sidebar">
+    <aside id="sidebar" aria-label="Panneau de contrôle nowindcity">
 
       <div class="sidebar-header">
         <div class="logo-wrapper">
-          <div class="logo-icon">💨</div>
+          <div class="logo-icon" aria-hidden="true">💨</div>
           <div>
             <h1 class="app-title">nowindcity</h1>
-            <p class="app-subtitle">Les villes les moins venteuses de France</p>
+            <h2 class="app-subtitle">Les villes les moins venteuses de France</h2>
           </div>
         </div>
       </div>
 
       <div class="sidebar-inner">
         <div class="sidebar-actions">
-          <button id="btn-analyser" class="btn-primary">Analyser les vents</button>
-          <p id="status-message" class="text-sm mt-sm" style="color: var(--sky-500)"></p>
+          <button id="btn-analyser" class="btn-primary" aria-label="Lancer l'analyse des données de vent pour les 30 villes">
+            Analyser les vents
+          </button>
+          <p id="status-message" class="text-sm mt-sm" style="color: var(--sky-500)" aria-live="polite" aria-atomic="true"></p>
         </div>
 
-        <p class="section-title mt-md">Classement des villes</p>
-        <div id="city-list" class="cities-list"></div>
+        <h2 class="section-title mt-md">Classement des villes</h2>
+        <div id="city-list" class="cities-list" role="list"></div>
       </div>
 
-      <div class="legend">
+      <div class="legend" aria-label="Légende du score Frizz">
         <p class="legend-title">Score Frizz</p>
         <div class="legend-items">
           <div class="legend-item">
-            <span class="legend-dot" style="background:#0ea5e9"></span>
+            <span class="legend-dot" style="background:#0ea5e9" aria-hidden="true"></span>
             0–2 · Paradis 😇
           </div>
           <div class="legend-item">
-            <span class="legend-dot" style="background:#38bdf8"></span>
+            <span class="legend-dot" style="background:#38bdf8" aria-hidden="true"></span>
             3–4 · Calme 😊
           </div>
           <div class="legend-item">
-            <span class="legend-dot" style="background:#f59e0b"></span>
+            <span class="legend-dot" style="background:#f59e0b" aria-hidden="true"></span>
             5–6 · Modéré 😐
           </div>
           <div class="legend-item">
-            <span class="legend-dot" style="background:#f97316"></span>
+            <span class="legend-dot" style="background:#f97316" aria-hidden="true"></span>
             7–8 · Venteux 😬
           </div>
           <div class="legend-item">
-            <span class="legend-dot" style="background:#ef4444"></span>
+            <span class="legend-dot" style="background:#ef4444" aria-hidden="true"></span>
             9–10 · Tempête 😱
           </div>
         </div>
@@ -114,7 +134,9 @@
     </aside>
 
     <!-- Carte Leaflet -->
-    <div id="map"></div>
+    <main>
+      <div id="map" aria-label="Carte interactive des vents en France" role="application"></div>
+    </main>
 
   </div>
 
