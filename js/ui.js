@@ -5,6 +5,7 @@ const CITIES_URL = './data/cities.json';
 // État de l'application
 let map = null;
 let currentMarkers = [];
+let markersMap = {}; // city.name → marker Leaflet
 
 /**
  * Charge la liste des villes depuis le fichier JSON local.
@@ -18,12 +19,14 @@ const loadCities = async () => {
 
 /**
  * Crée une card de ville pour la sidebar.
+ * Au clic, centre la carte sur la ville et ouvre son popup.
  * @param {object} city - { name, lat, lng, region }
  * @param {number} score - Score Frizz 0-10
  * @param {object} windData - { speed, gusts }
+ * @param {L.CircleMarker} marker - Marqueur Leaflet correspondant
  * @returns {HTMLElement}
  */
-const createCityCard = (city, score, windData) => {
+const createCityCard = (city, score, windData, marker) => {
   const { label, color, emoji } = getWindCategory(score);
 
   const card = document.createElement('div');
@@ -42,6 +45,16 @@ const createCityCard = (city, score, windData) => {
     </div>
   `;
 
+  // Centrage carte + ouverture popup au clic
+  card.addEventListener('click', () => {
+    map.setView([city.lat, city.lng], 10, { animate: true });
+    marker.openPopup();
+
+    // Mise en évidence de la card active
+    document.querySelectorAll('.city-card').forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+  });
+
   return card;
 };
 
@@ -57,7 +70,7 @@ const renderCityList = (results) => {
   const sorted = [...results].sort((a, b) => a.score - b.score);
 
   sorted.forEach(({ city, score, windData }) => {
-    list.appendChild(createCityCard(city, score, windData));
+    list.appendChild(createCityCard(city, score, windData, markersMap[city.name]));
   });
 };
 
@@ -97,6 +110,12 @@ const analyserVents = async () => {
 
     // Affichage des nouveaux marqueurs sur la carte
     currentMarkers = updateAllMarkers(map, results);
+
+    // Index city.name → marker pour les clics depuis la sidebar
+    markersMap = {};
+    results.forEach(({ city }, i) => {
+      markersMap[city.name] = currentMarkers[i];
+    });
 
     // Mise à jour de la liste dans la sidebar
     renderCityList(results);
